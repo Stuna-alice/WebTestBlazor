@@ -1,0 +1,63 @@
+﻿
+@page "/"
+@* import in the model Folder whatever class *@
+@using Models  
+@using MudBlazor
+
+<PageTitle>GameStop</PageTitle>
+
+<h1>Game Catalog</h1>
+
+<table >
+    <thead>
+         <th>Id</th>
+         <th>Name</th>
+         <th>Genre</th>
+         <th>Price</th>
+         <th>Release Date</th>
+    </thead>
+    <tbody>
+      @foreach (var item in gameCatalog)
+        {
+            <tr>
+                <td>@item.game_Id</td>
+                <td>@item.game_Name</td>
+                <td>@item.game_Genre</td>
+                <td>@item.game_Price</td>
+                <td>@item.game_ReleaseDate.ToString("MM/dd/yyyy")</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code 
+{
+ private Game[] gameCatalog = new []
+    {
+        new Game()
+        {
+           game_Id = 1,
+           game_Name = "Tekken 8",
+           game_Genre = "RPG",
+           game_Price = 18.2M,
+           game_ReleaseDate = new DateTime (2009,2,3)
+        },
+         new Game()
+        {
+           game_Id = 2,
+           game_Name = "Witcher 3",
+           game_Genre = "Open World",
+           game_Price = 11.2M,
+           game_ReleaseDate = new DateTime (2001,2,4)
+        },
+         new Game()
+        {
+           game_Id =3 ,
+           game_Name = "Mario Cart",
+           game_Genre = "Disney ",
+           game_Price = 21.2M,
+           game_ReleaseDate = new DateTime (2003,2,2)
+        }
+    };
+}
